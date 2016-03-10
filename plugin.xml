@@ -13,6 +13,7 @@
     
     <!-- android -->
     <platform name="android">
+        <preference name="API_KEY_FOR_ANDROID" />
         
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PlacePickerPlugin">
@@ -20,11 +21,19 @@
             </feature>
         </config-file>
         
+        <framework src="com.google.android.gms:play-services-location:+" />
+        
         <js-module src="www/PlacePicker.js" name="PlacePicker">
             <clobbers target="placePicker" />
         </js-module>
         
         <source-file src="src/android/PlacePicker.java" target-dir="src/org/apache/cordova/placepicker" />
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data
+              android:name="com.google.android.maps.v2.API_KEY"
+              android:value="$API_KEY_FOR_ANDROID" />
+        </config-file>
         
     </platform>
     
