@@ -27,7 +27,7 @@
             <clobbers target="placePicker" />
         </js-module>
         
-        <source-file src="src/android/PlacePicker.java" target-dir="src/org/apache/cordova/placepicker" />
+        <source-file src="src/android/PlacePickerPlugin.java" target-dir="src/org/apache/cordova/placepicker" />
         
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data
