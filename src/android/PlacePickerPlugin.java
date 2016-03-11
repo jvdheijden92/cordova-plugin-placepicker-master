@@ -48,9 +48,16 @@ public class PlacePickerPlugin extends CordovaPlugin {
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == -1) {
                 Place place = PlacePicker.getPlace(data, cordova.getActivity());
-                JSONArray jsonArray = new JSONArray();
-                jsonArray.put(place.getLatLng());
-                mCallBackContext.success(jsonArray);
+                LatLng latlng = place.getLatLng();
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("lat", String.valueOf(latlng.latitude));
+                    json.put("lng", String.valueOf(latlng.longitude));
+                    mCallBackContext.success(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    callbackContext.error("JSON parse failed");
+                }
             }
         }
     }
