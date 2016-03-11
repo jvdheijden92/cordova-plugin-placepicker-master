@@ -1,12 +1,10 @@
 /**
  * Constructor
  */
-function PlacePicker() {
-  //this._callback;
-}
+function PlacePicker() {}
 
 /**
- * show - true to show the ad, false to hide the ad
+ * Show the PlacePicker
  */
 PlacePicker.prototype.show = function(cb, errCb) {
     cordova.exec(cb, errCb, "PlacePickerPlugin", '', []);
@@ -22,14 +20,3 @@ if (!window.plugins) {
 if (!window.plugins.placePicker) {
     window.plugins.placePicker = placePicker;
 }
-
-PlacePicker.install = function () {
-    if (!window.plugins) {
-        window.plugins = {};
-    }
-
-    window.plugins.placePicker = new PlacePicker();
-    return window.plugins.placePicker;
-};
-
-cordova.addConstructor(PlacePicker.install);
