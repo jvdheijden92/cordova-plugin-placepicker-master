@@ -58,7 +58,7 @@ public class PlacePickerPlugin extends CordovaPlugin {
                     mCallBackContext.success(json);
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    callbackContext.error("JSON parse failed");
+                    mCallBackContext.error("JSON parse failed");
                 }
             }
         }
