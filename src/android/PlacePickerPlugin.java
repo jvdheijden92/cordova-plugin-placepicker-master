@@ -52,10 +52,12 @@ public class PlacePickerPlugin extends CordovaPlugin {
             if (resultCode == -1) {
                 Place place = PlacePicker.getPlace(data, cordova.getActivity());
                 LatLng latlng = place.getLatLng();
+                String placeId = place.getId();
                 JSONObject json = new JSONObject();
                 try {
                     json.put("lat", String.valueOf(latlng.latitude));
                     json.put("lng", String.valueOf(latlng.longitude));
+                    json.put("placeId", String.valueOf(placeId));
                     mCallBackContext.success(json);
                 } catch (JSONException e) {
                     e.printStackTrace();
